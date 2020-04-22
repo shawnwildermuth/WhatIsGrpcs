@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "WhatIsGrpc";
+
+service WeatherService {
+  rpc GetWeather (WeatherRequest) returns (WeatherResponse);
+}
+message WeatherRequest {
+  int32 stationId = 1;
+}
+
+message WeatherResponse {
+  float temperature = 1;
+  float windSpeed = 2;
+  float rainAmount = 3;
+}

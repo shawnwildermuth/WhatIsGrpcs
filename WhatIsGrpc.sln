@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29230.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatIsGrpc", "WhatIsGrpc\WhatIsGrpc.csproj", "{6240D106-88F1-4BA9-90C5-FB24F9D83F2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatIsGrpc.Client", "WhatIsGrpc.Client\WhatIsGrpc.Client.csproj", "{602F2AC4-3A02-4B42-84A6-195427405CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatIsGrpc.Client", "WhatIsGrpc.Client\WhatIsGrpc.Client.csproj", "{602F2AC4-3A02-4B42-84A6-195427405CFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
