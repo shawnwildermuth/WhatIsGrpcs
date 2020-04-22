@@ -4,6 +4,7 @@ option csharp_namespace = "WhatIsGrpc";
 
 service WeatherService {
   rpc GetWeather (WeatherRequest) returns (WeatherResponse);
+  rpc StreamWeather (WeatherRequest) returns (stream WeatherResponse);
 }
 message WeatherRequest {
   int32 stationId = 1;
