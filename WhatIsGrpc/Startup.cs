@@ -12,6 +12,7 @@ using WhatIsGrpc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WhatIsGrpc.Services;
 
 namespace WhatIsGrpc
 {
@@ -34,6 +35,7 @@ namespace WhatIsGrpc
           .AddEntityFrameworkStores<ApplicationDbContext>();
       services.AddControllersWithViews();
       services.AddRazorPages();
+      services.AddGrpc();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,8 @@ namespace WhatIsGrpc
 
       app.UseEndpoints(endpoints =>
       {
+        endpoints.MapGrpcService<WeatherGrpcService>();
+
         endpoints.MapControllerRoute(
                   name: "default",
                   pattern: "{controller=Home}/{action=Index}/{id?}");
