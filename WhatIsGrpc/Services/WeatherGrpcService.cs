@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,21 @@ namespace WhatIsGrpc.Services
       {
         await responseStream.WriteAsync(GenerateResult());
       }
+    }
+
+    public override Task<WeatherSample> GetWeatherSamples(WeatherRequest request, ServerCallContext context)
+    {
+      var sample = new WeatherSample()
+      {
+        Time = Timestamp.FromDateTime(DateTime.UtcNow)
+      };
+
+      for (var x = 0; x < 5; ++x)
+      {
+        sample.Samples.Add(GenerateResult());
+      }
+
+      return Task.FromResult(sample);
     }
   }
 

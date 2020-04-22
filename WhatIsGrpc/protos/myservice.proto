@@ -1,13 +1,20 @@
 syntax = "proto3";
 
 option csharp_namespace = "WhatIsGrpc";
+import "google/protobuf/timestamp.proto";
 
 service WeatherService {
   rpc GetWeather (WeatherRequest) returns (WeatherResponse);
   rpc StreamWeather (WeatherRequest) returns (stream WeatherResponse);
+  rpc GetWeatherSamples (WeatherRequest) returns (WeatherSample);
 }
 message WeatherRequest {
   int32 stationId = 1;
+}
+
+message WeatherSample {
+  google.protobuf.Timestamp time = 1;
+  repeated WeatherResponse samples = 2;
 }
 
 message WeatherResponse {

@@ -22,13 +22,14 @@ namespace WhatIsGrpc.Client
       {
         var request = new WeatherRequest() { StationId = 0 };
 
-        var token = new CancellationToken();
-        var response = client.StreamWeather(request, cancellationToken: token);
+        var response = await client.GetWeatherSamplesAsync(request);
 
-        while (await response.ResponseStream.MoveNext(token))
+        Console.WriteLine($"Samples Gathered: {response.Time.ToDateTime().ToLongTimeString()}");
+        foreach (var res in response.Samples)
         {
-          Console.WriteLine($"{response.ResponseStream.Current}");
+          Console.WriteLine($"{res}");
         }
+        Console.WriteLine(new String('-', 80));
         Console.ReadKey();
       }
     }
